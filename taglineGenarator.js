@@ -29,6 +29,7 @@ document
     const result = await data.json();
     const randomIndex = Math.floor(Math.random() * 10);
     const modalBody = document.getElementById("random-room-info-modal-body");
+    console.log(modalBody)
     const { name, summary, property_type, images, review_scores } = result[9];
     
     
@@ -61,7 +62,7 @@ document
         <p class="card-text">${summary}</p>
         <div id='review-score'>
       Review Scores :
-      ${review_scores.scores.review_scores_accuracy}
+      ${review_scores?.scores?.review_scores_accuracy}
     </div>
       </div>
       <button class="btn btn-info btn-lg"  role="button"
