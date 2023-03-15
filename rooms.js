@@ -14,7 +14,7 @@ const displayRoomsData = async (rooms) => {
   const roomsContainer = document.getElementById("rooms-container");
   roomsContainer.innerHTML=''
   rooms.forEach((room) => {
-    console.log(room)
+    // console.log(room)
     const { name, summary, property_type, images,number_of_reviews,price,_id } = room;
     roomsContainer.innerHTML += `
  <div class="col">
@@ -46,8 +46,8 @@ range.addEventListener("input", () => {
   const value = range.value;
 
   document.getElementById('review-count').innerText = value
-  const filteredData= allRooms.filter( number_of_reviews >= value)
-  filteredData(allRooms) 
+  const filteredData= allRooms.filter( (r) => r.number_of_reviews >= value)
+  displayRoomsData(filteredData) 
 });
 
 
@@ -56,7 +56,8 @@ range.addEventListener("input", () => {
 
 document.getElementById('sort-by-price-btn').addEventListener('click', () =>{
      allRooms.sort((a,b)=>{
-        return parseFloat(a.price) < parseFloat(b.price)  ? 1: -1
+      // console.log(a,b);
+        return parseFloat(a.price.$numberDecimal) < parseFloat(b.price.$numberDecimal)  ? 1: -1
     })
     // console.log(allRooms)
     displayRoomsData(allRooms)
